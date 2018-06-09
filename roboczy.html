@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var worker = null;
+
+        function startWorkerThread() {
+            var btnTimestamp = document.getElementById('btnTimestamp');
+            var btnTerminateWorker = document.getElementById('btnTerminateWorker');
+            btnTimestamp.addEventListener('click', getTimestamp, false);
+            btnTerminateWorker.addEventListener('click', terminateWorker, false);
+            worker = new Worker('js/procent.js');
+            worker.onmessage = function (event) {
+                document.getElementById('result').textContent = event.data;
+            }
+        }
+
+        function terminateWorker() {
+            worker.terminate();
+        }
+
+        function getTimestamp() {
+            var currentDate = new Date();
+            document.getElementById('timelog').innerHTML += currentDate + '<br>';
+        }
+
+        window.addEventListener('load',startWorkerThread,false);
+
+    </script>
+</head>
+<body>
+<p>Obliczanie:
+    <output id="result"></output>
+</p>
+<button id="btnTimestamp">Znacznik czasowy</button>
+<button id="btnTerminateWorker">Zakończ wątek roboczy</button>
+<section id="timelog"></section>
+</body>
+</html>

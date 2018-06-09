@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class</title>
+    <script>
+        class Vehicle {
+            constructor(name, type) {
+                this.name = name;
+                this.type = type;
+            }
+
+
+            getName() {
+                return this.name;
+            }
+
+            getType() {
+                return this.type;
+            }
+
+        }
+
+        class Car extends Vehicle {
+
+            constructor(name) {
+                super(name, 'samochód');
+                this._name = name;
+            }
+
+
+            getName() {
+                return 'Twój nowy samochód to: '+this._name;
+            }
+
+        }
+
+        let car=new Car('BMW')
+        console.log(car.getName())
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
