@@ -1,12 +1,14 @@
 @charset "UTF-8";
 /*CSS Document*/
-ul{
+ul {
     padding-left: 0;
 }
-li{
+
+li {
     list-style: none;
 }
-.done-true{
+
+.done-true {
     text-decoration: line-through;
     color: grey;
 }
