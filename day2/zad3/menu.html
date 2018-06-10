@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dokument bez tytułu</title>
+
+    <script>
+        var menu;
+        var XMLHttpRequestObject = false;
+
+        if (window.XMLHttpRequest) {
+
+            XMLHttpRequestObject = new XMLHttpRequest();
+            XMLHttpRequestObject.overrideMimeType("text/xml");
+
+        } else if (window.ActiveXObject) {
+
+            XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        function getmenu1() {
+
+            if (window.XMLHttpRequest) {
+
+                XMLHttpRequestObject.open("GET", "menu1.xml");
+
+                XMLHttpRequestObject.onreadystatechange = function () {
+                    if (XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200) {
+
+                        var xmlDocument = XMLHttpRequestObject.responseXML;
+                        menu = xmlDocument.getElementsByTagName("menuitem");
+                        listmenu();
+
+                    }
+                }
+                XMLHttpRequestObject.send(null);
+            }
+
+        }
+
+
+        function getmenu2() {
+
+            if (window.XMLHttpRequest) {
+
+                XMLHttpRequestObject.open("GET", "menu2.xml");
+
+                XMLHttpRequestObject.onreadystatechange = function () {
+                    if (XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200) {
+
+                        var xmlDocument = XMLHttpRequestObject.responseXML;
+                        menu = xmlDocument.getElementsByTagName("menuitem");
+                        listmenu();
+
+                    }
+                }
+                XMLHttpRequestObject.send(null);
+            }
+
+        }
+
+        function listmenu() {
+            var loopindex;
+            var selectControl = document.getElementById("menuList");
+
+            for (loopindex = 0; loopindex < menu.length; loopindex++) {
+                selectControl.options[loopindex] = new Option(menu[loopindex].firstChild.data);
+            }
+        }
+
+        function setmenu() {
+
+            document.getElementById("targetDiv").innerHTML = "Twój wybór to: " +
+                menu[document.getElementById("menuList").selectedIndex].firstChild.data;
+        }
+
+    </script>
+
+</head>
+
+<body>
+<h2>Pobieranie menu z XML</h2>
+<form>
+
+    <select size="1" id="menuList" onChange="setmenu()">
+        <option>Wybierz element z listy</option>
+    </select>
+    <br><br>
+    <input type="button" value="Pobierz menu pierwsze" onClick="getmenu1()">
+    <input type="button" value="Pobierz menu drugie" onClick="getmenu2()">
+
+</form>
+
+<div id="targetDiv" width="100" height="100">Wybrany lunch wyświetli się tutaj</div>
+</body>
+</html>

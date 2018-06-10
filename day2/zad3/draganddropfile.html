@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Przetwarzanie wielu plików za pomocą FileList</title>
+    <style>
+        #dropZone {
+            width: 300px;
+            border: 2px dashed #bbb;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            font: 20pt bold;
+            color: #bbb;
+        }
+
+        #fileTable {
+            border: 1px solid #000;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 5px;
+            visibility: hidden;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #17D473;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff;
+        }
+    </style>
+    //wpisz tutaj skrypt
+</head>
+<body>
+<h1>Przeciągnij kilka plików i upuść na poniższą strefę:</h1>
+<section id="fileSelection">
+    <!--
+        // Wybór wielu plików można również osiągnąć za pomocą atrybutu multiple
+        <input type="file" id="input" multiple="true" onchange="displayFiles(this.files)">
+    -->
+    <div id="dropZone">Tutaj upuszczaj pliki</div>
+</section>
+<section id="filesSelected">
+    <br>
+    <div id="fileCount"></div>
+    <table id="fileTable">
+    </table>
+</section>
+</body>
+</html>
