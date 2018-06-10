@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myTODO</title>
+    <script src="../../biblioteki/angular.js"></script>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+<h2>Lista zadań</h2>
+<div ng-controller="TodoCtrl">
+    <span>Pozostało: {{remaining()}} z {{todos.length}}</span>
+    [<a href="" ng-click="archive">usuń zakończone zadania</a>]
+    <ul>
+        <li ng-repeat="todo in todos">
+            <input type="checkbox" ng-model="todo.done">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+    </ul>
+    <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText" size="30" placeholder="wpisz treśc zadania">
+        <input type="submit" value="dodaj zadanie">
+    </form>
+</div>
+</body>
+</html>

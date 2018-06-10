@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope</title>
+    <script src="../biblioteki/angular.js"></script>
+</head>
+<body>
+<div ng-app="mojeAuto" ng-controller="mojCtrl">
+    <h2>Twój samochód to: {{carname}}</h2>
+    <script>
+        var app = angular.module('mojeAuto', []);
+        app.controller('mojCtrl',function ($scope){
+            $scope.carname="Audi";
+        });
+    </script>
+</div>
+</body>
+</html>
