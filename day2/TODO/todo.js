@@ -6,7 +6,7 @@ function TodoCtrl($scope) {
 
     $scope.addTodo = function () {
         $scope.todos.push({text: $scope.todoText, done: false});
-        $scope.addTodo = '';
+        $scope.todoText = '';
     };
 
     $scope.remaining = function () {
@@ -19,9 +19,11 @@ function TodoCtrl($scope) {
 
     $scope.archive = function () {
         var oldTodos = $scope.todos;
-        $scope.todo = [];
+        $scope.todos = [];
         angular.forEach(oldTodos, function (todo) {
-            if (!todo.done) $scope.todos.push(todo)
+            if (!todo.done) {
+                $scope.todos.push(todo);
+            }
         });
     };
 

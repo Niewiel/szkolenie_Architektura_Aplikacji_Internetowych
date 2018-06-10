@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="UTF-8">
     <title>myTODO</title>
-    <script src="../../biblioteki/angular.js"></script>
+    <script src="../../biblioteki/angular.min.js"></script>
     <script src="todo.js"></script>
     <link rel="stylesheet" href="todo.css">
 
@@ -12,7 +12,7 @@
 <h2>Lista zadań</h2>
 <div ng-controller="TodoCtrl">
     <span>Pozostało: {{remaining()}} z {{todos.length}}</span>
-    [<a href="" ng-click="archive">usuń zakończone zadania</a>]
+    [<a href="" ng-click="archive()">usuń zakończone zadania</a>]
     <ul>
         <li ng-repeat="todo in todos">
             <input type="checkbox" ng-model="todo.done">
