@@ -4,22 +4,21 @@ import {Component, Directive} from 'angular2/core';
 @Directive({
     selector: 'input[log-directive]',
     host: {
-        '(input)': 'oninput($event)'
+        '(input)': 'onInput($event)'
     }
 })
 
 class LogDirective {
     onInput(event) {
-        console.log(event.target.valueOf());
+        console.log(event.target.value);
     }
 }
 
 @Component({
     selector: 'directive-example',
     directives: [LogDirective],
-    template: '<input type="text" log-directive=""/>'
+    template: '<input type="text" log-directive>'
 })
-
 class DirectiveExample {
 }
 
